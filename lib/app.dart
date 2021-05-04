@@ -9,7 +9,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         accentColor: Colors.black,
-        primaryColor: Colors.yellow,
+        primaryColor: Colors.blue,
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.yellow,
         ),

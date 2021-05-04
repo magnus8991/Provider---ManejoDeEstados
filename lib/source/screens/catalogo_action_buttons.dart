@@ -9,20 +9,20 @@ class CatalogoActionButtons extends StatelessWidget {
     final provider = Provider.of<CatalogoProvider>(context, listen: false);
     return Row(
       children: [
-        provider.cartItems.isNotEmpty
+        provider.elementosCarrito.isNotEmpty
             ? IconButton(
-                icon: Icon(Icons.delete),
+                icon: Icon(Icons.delete, color: Colors.white),
                 onPressed: () {
-                  provider.deleteAll();
+                  provider.eliminarTodos();
                 },
               )
             : const SizedBox.shrink(),
         Stack(
           children: [
             IconButton(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(Icons.shopping_cart, color: Colors.white),
               onPressed: () {
-                final page = PantallaCarrito.init(provider.cartItems);
+                final page = PantallaCarrito.init(provider.elementosCarrito);
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => page),
                 );
@@ -31,12 +31,12 @@ class CatalogoActionButtons extends StatelessWidget {
             Positioned(
               right: 5.0,
               top: 0.0,
-              child: provider.cartItems.isNotEmpty
+              child: provider.elementosCarrito.isNotEmpty
                   ? CircleAvatar(
                       maxRadius: 10,
                       backgroundColor: Colors.red,
                       child: Text(
-                        provider.cartItems.length.toString(),
+                        provider.elementosCarrito.length.toString(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,

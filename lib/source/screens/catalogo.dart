@@ -4,13 +4,13 @@ import 'package:state_management/source/domain/item.dart' show Item;
 import 'package:state_management/source/common/providers/catalogoProvider.dart';
 import 'catalogo_action_buttons.dart';
 
-class CatalogScreen extends StatelessWidget {
-  CatalogScreen._();
+class PantallaCatalogo extends StatelessWidget {
+  PantallaCatalogo._();
 
   static ChangeNotifierProvider init() =>
       ChangeNotifierProvider<CatalogoProvider>(
-        create: (_) => CatalogoProvider()..loadData(),
-        builder: (_, __) => CatalogScreen._(),
+        create: (_) => CatalogoProvider()..cargarDatos(),
+        builder: (_, __) => PantallaCatalogo._(),
       );
 
   @override
@@ -26,7 +26,7 @@ class CatalogScreen extends StatelessWidget {
           "Catálogo",
           style: Theme.of(context).textTheme.headline4.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).accentColor,
+                color: Colors.white,
               ),
         ),
       ),
@@ -38,11 +38,11 @@ class CatalogScreen extends StatelessWidget {
               itemCount: provider.allMyItems.length,
               itemBuilder: (_, index) => CatalogItem(
                 item: provider.allMyItems[index],
-                wasAdded: provider.cartItems.contains(
+                wasAdded: provider.elementosCarrito.contains(
                   provider.allMyItems[index],
                 ),
                 onTap: () {
-                  provider.addItem(provider.allMyItems[index]);
+                  provider.agregarItem(provider.allMyItems[index]);
                 },
               ),
               separatorBuilder: (_, index) => Divider(),
@@ -71,8 +71,8 @@ class CatalogItem extends StatelessWidget {
         width: 50,
         color: item.color,
       ),
-      title: Text(item.name),
-      subtitle: Text("\$${item.price}"),
+      title: Text(item.nombre),
+      subtitle: Text("\$${item.precio}"),
       trailing: !wasAdded
           ? OutlinedButton(
               child: Text("AGREGAR"),

@@ -3,13 +3,16 @@ import 'package:state_management/source/domain/item.dart';
 
 class CarritoProvider extends ChangeNotifier {
   bool loading = false;
-  final List<Item> cartItems;
-  double get cartTotal =>
-      cartItems.isNotEmpty ? cartItems.map((val) => val.price).reduce((val1, val2) => val1 + val2) : 0.0;
+  final List<Item> elementosCarrito;
+  double get totalCarrito => elementosCarrito.isNotEmpty
+      ? elementosCarrito
+          .map((item) => item.precio)
+          .reduce((valor1, valor2) => valor1 + valor2)
+      : 0.0;
 
-  CarritoProvider(this.cartItems);
+  CarritoProvider(this.elementosCarrito);
 
-  Future<void> checkout() async {
+  Future<void> comprar() async {
     loading = true;
     notifyListeners();
 

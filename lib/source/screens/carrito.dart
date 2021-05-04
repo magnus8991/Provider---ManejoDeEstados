@@ -13,9 +13,9 @@ class PantallaCarrito extends StatelessWidget {
         builder: (_, __) => PantallaCarrito._(),
       );
 
-  void checkoutMyCart(BuildContext context) async {
+  void comprarCarrito(BuildContext context) async {
     final provider = context.read<CarritoProvider>();
-    await provider.checkout();
+    await provider.comprar();
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (_) => PantallaGracias(),
@@ -28,12 +28,16 @@ class PantallaCarrito extends StatelessWidget {
     final provider = context.watch<CarritoProvider>();
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () => Navigator.pop(context)),
         title: Text(
           "Carrito de Compras",
           style: Theme.of(context).textTheme.headline4.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
-                color: Theme.of(context).accentColor,
+                color: Colors.white,
               ),
         ),
       ),
@@ -44,18 +48,18 @@ class PantallaCarrito extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(15),
               children: [
-                for (var item in provider.cartItems)
+                for (var item in provider.elementosCarrito)
                   Row(
                     children: [
                       Expanded(
                         child: Text(
-                          '* ${item.name}',
+                          '* ${item.nombre}',
                           style: Theme.of(context).textTheme.headline6,
                         ),
                       ),
                       Expanded(
                         child: Text(
-                          '${item.price}',
+                          '${item.precio}',
                           style: Theme.of(context).textTheme.headline6,
                         ),
                       ),
@@ -68,18 +72,18 @@ class PantallaCarrito extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  "Total : ${provider.cartTotal}",
+                  "Total : ${provider.totalCarrito}",
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 if (provider.loading)
                   Center(
                     child: CircularProgressIndicator(),
                   )
-                else if (provider.cartItems.isNotEmpty)
+                else if (provider.elementosCarrito.isNotEmpty)
                   ElevatedButton(
                     child: Text("Comprar Carrito"),
                     onPressed: () {
-                      checkoutMyCart(context);
+                      comprarCarrito(context);
                     },
                   )
               ],

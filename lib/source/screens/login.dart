@@ -41,7 +41,7 @@ class PantallaLogin extends StatelessWidget {
             ElevatedButton(
               child: Text("Entrar"),
               onPressed: () {
-                final page = CatalogScreen.init();
+                final page = PantallaCatalogo.init();
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (_) => page),
                 );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const _itemNames = [
+const nombresItems = [
   'Code Smell',
   'Control Flow',
   'Interpreter',
@@ -19,10 +19,10 @@ const _itemNames = [
 ];
 
 List<Item> _items = List.generate(
-  _itemNames.length,
+  nombresItems.length,
   (index) => Item(
     id: index,
-    name: _itemNames[index],
+    nombre: nombresItems[index],
   ),
 );
 
@@ -31,13 +31,13 @@ List<Item> get allItems => List.unmodifiable(_items);
 @immutable
 class Item {
   final int id;
-  final String name;
+  final String nombre;
   final Color color;
-  final double price;
+  final double precio;
 
   Item({
     this.id,
-    this.name,
+    this.nombre,
   })  : this.color = Colors.primaries[id % Colors.primaries.length],
-        this.price = (id + 1) * 10.0;
+        this.precio = (id + 1) * 10.0;
 }

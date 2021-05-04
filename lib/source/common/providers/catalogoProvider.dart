@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:state_management/source/domain/item.dart';
 
 class CatalogoProvider extends ChangeNotifier {
-  final List<Item> cartItems = [];
+  final List<Item> elementosCarrito = [];
   List<Item> allMyItems = [];
   bool loading = false;
 
-  void loadData() async {
+  void cargarDatos() async {
     loading = true;
     notifyListeners();
 
@@ -18,13 +18,13 @@ class CatalogoProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addItem(Item item) {
-    cartItems.add(item);
+  void agregarItem(Item item) {
+    elementosCarrito.add(item);
     notifyListeners();
   }
 
-  void deleteAll() {
-    cartItems.clear();
+  void eliminarTodos() {
+    elementosCarrito.clear();
     notifyListeners();
   }
 }

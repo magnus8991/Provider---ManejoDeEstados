@@ -19,7 +19,7 @@ class PantallaGracias extends StatelessWidget {
             ElevatedButton(
               child: Text("Volver"),
               onPressed: () {
-                final page = CatalogScreen.init();
+                final page = PantallaCatalogo.init();
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (_) => page),
