@@ -30,6 +30,7 @@ class PantallaLogin extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width / 1.5,
               child: TextField(
+                obscureText: true,
                 decoration: InputDecoration(
                   hintText: "Contraseña",
                 ),
