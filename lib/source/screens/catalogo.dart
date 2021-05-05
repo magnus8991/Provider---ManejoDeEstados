@@ -15,7 +15,7 @@ class PantallaCatalogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final provider = Provider.of<CatalogoProvider>(context);
+    //final provider = Provider.of<CatalogoProvider>(context, listen: true);
     final provider = context.watch<CatalogoProvider>();
     return Scaffold(
       appBar: AppBar(
