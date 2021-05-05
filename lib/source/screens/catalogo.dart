@@ -36,7 +36,7 @@ class PantallaCatalogo extends StatelessWidget {
             )
           : ListView.separated(
               itemCount: provider.todosMisElementos.length,
-              itemBuilder: (_, index) => CatalogItem(
+              itemBuilder: (_, index) => CatalogoItem(
                 item: provider.todosMisElementos[index],
                 wasAdded: provider.elementosCarrito.contains(
                   provider.todosMisElementos[index],
@@ -51,11 +51,11 @@ class PantallaCatalogo extends StatelessWidget {
   }
 }
 
-class CatalogItem extends StatelessWidget {
+class CatalogoItem extends StatelessWidget {
   final Item item;
   final VoidCallback onTap;
   final bool wasAdded;
-  const CatalogItem({
+  const CatalogoItem({
     Key key,
     this.item,
     this.onTap,
