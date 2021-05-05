@@ -35,14 +35,14 @@ class PantallaCatalogo extends StatelessWidget {
               child: CircularProgressIndicator(),
             )
           : ListView.separated(
-              itemCount: provider.allMyItems.length,
+              itemCount: provider.todosMisElementos.length,
               itemBuilder: (_, index) => CatalogItem(
-                item: provider.allMyItems[index],
+                item: provider.todosMisElementos[index],
                 wasAdded: provider.elementosCarrito.contains(
-                  provider.allMyItems[index],
+                  provider.todosMisElementos[index],
                 ),
                 onTap: () {
-                  provider.agregarItem(provider.allMyItems[index]);
+                  provider.agregarItem(provider.todosMisElementos[index]);
                 },
               ),
               separatorBuilder: (_, index) => Divider(),

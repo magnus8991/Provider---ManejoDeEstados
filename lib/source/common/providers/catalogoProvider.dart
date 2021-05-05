@@ -3,7 +3,7 @@ import 'package:state_management/source/domain/item.dart';
 
 class CatalogoProvider extends ChangeNotifier {
   final List<Item> elementosCarrito = [];
-  List<Item> allMyItems = [];
+  List<Item> todosMisElementos = [];
   bool loading = false;
 
   void cargarDatos() async {
@@ -11,8 +11,8 @@ class CatalogoProvider extends ChangeNotifier {
     notifyListeners();
 
     await Future.delayed(const Duration(seconds: 3));
-    allMyItems.clear();
-    allMyItems.addAll(allItems);
+    todosMisElementos.clear();
+    todosMisElementos.addAll(allItems);
 
     loading = false;
     notifyListeners();
